@@ -1,0 +1,42 @@
+Code Overview
+This is the brief code report explaining the code main points:
+Libraries Imported:
+- datasets: Used to load the PubMed Summarization dataset.
+- re: Provides functions for working with regular expressions.
+- transformers: Imports `T5Tokenizer` and `T5ForConditionalGeneration` for model training.
+- ipywidgets: Used for creating interactive widgets in Jupyter notebooks.
+- IPython.display: Allows displaying HTML content within the notebook.
+- Output, Button: Specific widgets imported from `ipywidgets` for file upload and button functionality.
+
+Dataset Loading and Preparation:
+- PubMed Summarization Dataset: Loaded using `load_dataset` from the `datasets` library. The dataset is accessed, and specifically the `train` split is used for training purposes.
+
+Text Preprocessing:
+- Preprocessing Function: `preprocess_text` function is defined to remove special characters and unnecessary spaces from text data using regular expressions (`re`).
+
+Model and Tokenizer Setup:
+- T5 Model and Tokenizer: `T5Tokenizer` and `T5ForConditionalGeneration` are initialized from the `transformers` library, using the pre-trained `t5-small` model.
+
+Summarization Function:
+- generate_summary: Uses the T5 model to generate a summary of the input text. It encodes the input text using the tokenizer, generates the summary using the model, and decodes it back into readable text.
+
+File Upload and Summarization Handling:
+- on_upload Function: Handles the file upload event triggered by the user. It checks if a file has been uploaded, reads its content, preprocesses the text, generates a summary using the `generate_summary` function, and displays both the original article and its summarized version using HTML formatting.
+
+Widgets Creation and Display:
+- FileUpload Widget: `upload_widget` is created to allow users to upload `.txt` files.
+- Button Widget: `upload_button` is a button widget labeled 'Upload and Summarize' that triggers the `on_upload` function when clicked.
+- Output Widget: `output` is an output widget that displays the original article and its summarized version.
+
+Display Widgets:
+- VBox Layout: Uses `widgets.VBox` to vertically stack the `upload_widget` and `upload_button`.
+- Display Output: `output` widget is displayed to show the results of file upload and summarization.
+
+Execution Flow:
+1. Initialization: Libraries are imported, dataset is loaded, and necessary functions (`preprocess_text`, `generate_summary`, `on_upload`) are defined.
+2. Widget Setup: `upload_widget` for file upload, `upload_button` for triggering upload action, and `output` for displaying results are created.
+3. Interaction: Users upload a `.txt` file using `upload_widget`, click 'Upload and Summarize' on `upload_button`, triggering the `on_upload` function.
+4. Result Display: Original article and summarized version are displayed in `output` using HTML formatting.
+
+Conclusion:
+The provided code snippet creates an interactive environment in a Jupyter notebook where users can upload PubMed articles in `.txt` format, preprocess the text, generate summaries using a pre-trained T5 model, and view both the original and summarized versions of the article. It effectively integrates data preprocessing, model usage, and interactive widget handling for a streamlined user experience.
